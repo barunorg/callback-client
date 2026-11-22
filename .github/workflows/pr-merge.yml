@@ -1,0 +1,18 @@
+# PR merged: notifications and cleanup only.
+name: PR Merged
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: read
+
+jobs:
+  merged:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Announce merge
+        run: |
+          echo "PR #${{ github.event.pull_request.number }} merged into ${{ github.base_ref }}"
+          echo "Merged by ${{ github.event.pull_request.merged_by.login }}"
