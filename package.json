@@ -10,12 +10,14 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.108.2",
     "next": "16.4.6",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "4.3.3",
+    "@tanstack/eslint-plugin-query": "^5.108.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
