@@ -4,15 +4,15 @@ FROM node:20-alpine AS base
 # ---- Dependencies ----
 FROM base AS dependencies
 WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm ci 
+COPY package.json pnpm-lock.yaml ./
+RUN corepack enable && pnpm install --frozen-lockfile
 
 # ---- Builder ----
 FROM base AS builder
 WORKDIR /app
 COPY . .
 COPY --from=dependencies /app/node_modules ./node_modules
-RUN npm run build
+RUN pnpm run build
 
 # ---- Runner ----
 FROM base AS runner
