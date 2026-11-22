@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
+import TanStackQueryClientProvider from "./TanStackQueryClientProvider";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -17,7 +19,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={cn("h-full antialiased bg-black", "font-sans", geist.variable)}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <TanStackQueryClientProvider>
+          <NuqsAdapter>{children}</NuqsAdapter>
+        </TanStackQueryClientProvider>
+      </body>
     </html>
   );
 }
