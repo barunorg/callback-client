@@ -1,6 +1,6 @@
 "use client";
 
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useSuspenseQueries } from "@tanstack/react-query";
 import { workspaceQueries } from "@/lib/api/workspaceQueries";
 import PageHeading from "@/components/shared/PageHeading";
 import { usePlan } from "@/stores/PlanProvider";
@@ -9,7 +9,10 @@ import ReferralRow from "./ReferralRow";
 import ReferralStats from "./ReferralStats";
 
 export default function ReferralsScreen() {
-  const { data: referrals } = useSuspenseQuery(workspaceQueries.referrals);
+  // Waits for the account too, so plan-dependent UI never flashes.
+  const [{ data: referrals }] = useSuspenseQueries({
+    queries: [workspaceQueries.referrals, workspaceQueries.account],
+  });
   const { isPro } = usePlan();
 
   return (

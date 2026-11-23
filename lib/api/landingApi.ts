@@ -2,7 +2,7 @@
 // Components at build time (static export), so they could later read from a
 // CMS or backend without shipping any fetching code to the browser.
 
-import { heroJobMatches, heroMetrics } from "./mock/data/hero";
+import { heroJobMatches, heroMetrics } from "./mock/data/landing/hero";
 import {
   applicationSteps,
   callbackPrinciples,
@@ -14,7 +14,7 @@ import {
   problemCards,
   testimonials,
   trustReportRows,
-} from "./mock/data/landingPage";
+} from "./mock/data/landing/landingPage";
 import { mockRequest } from "./mock/mockRequest";
 
 // No artificial latency at build time.

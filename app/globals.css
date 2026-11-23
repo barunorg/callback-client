@@ -18,6 +18,15 @@
   }
 }
 
+/* Keeps an element scrollable while hiding its scrollbar (sidebar nav). */
+@utility scrollbar-none {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 @theme inline {
   --font-heading: var(--font-bricolage-grotesque);
   --font-sans: var(--font-instrument-sans);

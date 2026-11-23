@@ -1,5 +1,5 @@
-import ScreenLoading from "@/components/shared/ScreenLoading";
+import DashboardSkeleton from "./components/DashboardSkeleton";
 
 export default function DashboardLoading() {
-  return <ScreenLoading label="Loading dashboard" />;
+  return <DashboardSkeleton />;
 }

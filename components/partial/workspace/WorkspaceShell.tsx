@@ -6,8 +6,6 @@ import { useState, type ReactNode } from "react";
 import { useInvalidatingMutation } from "@/hooks/useInvalidatingMutation";
 import * as workspaceApi from "@/lib/api/workspaceApi";
 import { workspaceQueries } from "@/lib/api/workspaceQueries";
-import ClientOnly from "@/components/shared/ClientOnly";
-import ScreenLoading from "@/components/shared/ScreenLoading";
 import { workspaceNavigation } from "@/lib/constants/workspaceNavigation";
 import DesktopSidebar from "./DesktopSidebar";
 import MobileHeader from "./MobileHeader";
@@ -22,7 +20,8 @@ export default function WorkspaceShell({ children }: { children: ReactNode }) {
     workspaceNavigation.find(({ slug }) => slug === activeSlug)?.label ??
     "Dashboard";
 
-  const { data: notifications = [] } = useQuery(workspaceQueries.notifications);
+  const { data: notifications = [], isPending: isNotificationsLoading } =
+    useQuery(workspaceQueries.notifications);
   const unreadCount = notifications.filter(({ isRead }) => !isRead).length;
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
@@ -67,6 +66,7 @@ export default function WorkspaceShell({ children }: { children: ReactNode }) {
       {isNotificationOpen && (
         <NotificationCenter
           notifications={notifications}
+          isLoading={isNotificationsLoading}
           onMarkRead={(id) => markRead.mutate(id)}
           onMarkAllRead={() => markAllRead.mutate()}
           onClose={() => setIsNotificationOpen(false)}
@@ -74,11 +74,7 @@ export default function WorkspaceShell({ children }: { children: ReactNode }) {
       )}
 
       <main className="min-w-0 px-4 py-6 sm:px-7 lg:py-8 lg:pr-10 lg:pl-26">
-        <ClientOnly
-          fallback={<ScreenLoading label={`Loading ${activeLabel}`} />}
-        >
-          {children}
-        </ClientOnly>
+        {children}
       </main>
     </div>
   );

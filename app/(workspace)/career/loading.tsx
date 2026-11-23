@@ -1,5 +1,5 @@
-import ScreenLoading from "@/components/shared/ScreenLoading";
+import CareerModeSkeleton from "./components/CareerModeSkeleton";
 
 export default function CareerModeLoading() {
-  return <ScreenLoading label="Loading career mode" />;
+  return <CareerModeSkeleton />;
 }

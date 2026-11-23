@@ -3,6 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { workspaceQueries } from "@/lib/api/workspaceQueries";
 import ActionButton from "@/components/shared/ActionButton";
+import SkeletonBlock from "@/components/shared/skeletons/SkeletonBlock";
 import Modal from "@/components/shared/Modal";
 
 export default function UpgradeModal({
@@ -16,7 +17,7 @@ export default function UpgradeModal({
   onUpgrade: () => void;
   onClose: () => void;
 }) {
-  const { data: planComparisonRows = [] } = useQuery(
+  const { data: planComparisonRows = [], isPending } = useQuery(
     workspaceQueries.planComparison,
   );
 
@@ -57,6 +58,18 @@ export default function UpgradeModal({
           </tr>
         </thead>
         <tbody className="bg-white">
+          {isPending &&
+            Array.from({ length: 6 }, (_, index) => (
+              <tr
+                key={index}
+                aria-hidden="true"
+                className="border-t border-[#EFECE4]"
+              >
+                <td colSpan={3} className="px-4.5 py-2.5">
+                  <SkeletonBlock tone="row" className="h-4 w-full" />
+                </td>
+              </tr>
+            ))}
           {planComparisonRows.map((row) => (
             <tr key={row.label} className="border-t border-[#EFECE4]">
               <th

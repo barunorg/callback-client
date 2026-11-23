@@ -33,7 +33,14 @@ export function useToast() {
   return pushToast;
 }
 
-export default function ToastProvider({ children }: { children: ReactNode }) {
+export default function ToastProvider({
+  children,
+  viewportClassName,
+}: {
+  children: ReactNode;
+  /** Repositions the toasts, e.g. above a fixed footer. */
+  viewportClassName?: string;
+}) {
   const [toasts, setToasts] = useState<Toast[]>([]);
 
   const dismissToast = useCallback((id: string) => {
@@ -52,7 +59,11 @@ export default function ToastProvider({ children }: { children: ReactNode }) {
   return (
     <ToastContext value={pushToast}>
       {children}
-      <ToastViewport toasts={toasts} onDismiss={dismissToast} />
+      <ToastViewport
+        toasts={toasts}
+        onDismiss={dismissToast}
+        className={viewportClassName}
+      />
     </ToastContext>
   );
 }

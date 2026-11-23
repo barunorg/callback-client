@@ -20,8 +20,8 @@ export default function MobileNavDrawer({
         onClick={onClose}
         className="absolute inset-0 bg-[#0F1F16]/45"
       />
-      <aside className="absolute inset-y-0 left-0 flex w-[min(18rem,88vw)] flex-col overflow-y-auto bg-[#0F1F16] px-3 py-4 text-[#E9EFE9] shadow-2xl">
-        <div className="flex items-start justify-between">
+      <aside className="absolute inset-y-0 left-0 flex w-[min(18rem,88vw)] flex-col overflow-hidden bg-[#0F1F16] px-3 py-4 text-[#E9EFE9] shadow-2xl">
+        <div className="flex shrink-0 items-start justify-between">
           <SidebarBrand isExpanded />
           <button
             type="button"
@@ -32,10 +32,13 @@ export default function MobileNavDrawer({
             <X aria-hidden="true" className="size-5" />
           </button>
         </div>
-        <SidebarNav activeSlug={activeSlug} isExpanded onNavigate={onClose} />
-        <div className="min-h-6 flex-1" />
-        <SidebarPlanCard />
-        <SidebarUserRow />
+        <div className="scrollbar-none min-h-0 flex-1 overflow-y-auto">
+          <SidebarNav activeSlug={activeSlug} isExpanded onNavigate={onClose} />
+        </div>
+        <div className="shrink-0 pt-6">
+          <SidebarPlanCard />
+          <SidebarUserRow />
+        </div>
       </aside>
     </div>
   );

@@ -1,5 +1,5 @@
-import ScreenLoading from "@/components/shared/ScreenLoading";
+import DocumentsSkeleton from "./components/DocumentsSkeleton";
 
 export default function DocumentsLoading() {
-  return <ScreenLoading label="Loading documents" />;
+  return <DocumentsSkeleton />;
 }

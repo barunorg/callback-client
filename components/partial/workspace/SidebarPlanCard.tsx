@@ -3,11 +3,25 @@
 import { useQuery } from "@tanstack/react-query";
 import { workspaceQueries } from "@/lib/api/workspaceQueries";
 import ActionButton from "@/components/shared/ActionButton";
+import SkeletonBlock from "@/components/shared/skeletons/SkeletonBlock";
 import { usePlan } from "@/stores/PlanProvider";
 
 export default function SidebarPlanCard() {
-  const { isPro, sentToday, dailyCap, openUpgrade } = usePlan();
+  const { account, isPro, sentToday, dailyCap, openUpgrade } = usePlan();
   const { data: queue = [] } = useQuery(workspaceQueries.queue);
+
+  if (!account) {
+    return (
+      <div
+        aria-hidden="true"
+        className="mb-3 flex flex-col gap-2.5 rounded-xl border border-white/9 bg-white/6 p-3.25"
+      >
+        <SkeletonBlock tone="dark" className="h-3 w-full" />
+        <SkeletonBlock tone="dark" className="h-1.25 w-full rounded-full" />
+        <SkeletonBlock tone="dark" className="h-8 w-full rounded-[9px]" />
+      </div>
+    );
+  }
 
   if (isPro) {
     return (

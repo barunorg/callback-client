@@ -12,6 +12,13 @@ export default async function HeroSection() {
     >
       <div className="mx-auto grid max-w-300 grid-cols-1 items-center gap-14 px-5 py-14 sm:px-12 sm:py-18 lg:grid-cols-[1.15fr_1fr]">
         <div className="min-w-0">
+          <p className="mb-5.5 inline-flex items-center gap-2 rounded-full border border-[#CFC9BA] px-3.5 py-1.5 text-xs font-semibold text-[#4A554C]">
+            <span
+              aria-hidden="true"
+              className="size-1.75 animate-ap-pulse rounded-full bg-[#1E7A4F]"
+            />
+            Built for international students. Works for everyone.
+          </p>
           <h1
             id="hero-title"
             className="mb-5 font-heading text-[42px] leading-[1.04] font-extrabold tracking-[-0.035em] sm:text-5xl lg:text-[56px]"
@@ -20,6 +27,11 @@ export default async function HeroSection() {
             <br />
             <span className="text-[#1E7A4F]">Give it to us. </span>
           </h1>
+          <p className="mb-7 max-w-120 text-[16.5px] leading-[1.6] text-pretty text-[#4A554C]">
+            Callback scans every source, screens out ghost jobs and scams,
+            tailors your resume, finds the recruiter&apos;s real email, and
+            applies — while you&apos;re in class. You just approve.
+          </p>
 
           <div className="flex flex-wrap items-center gap-3">
             <Link

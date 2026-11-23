@@ -1,5 +1,5 @@
-import ScreenLoading from "@/components/shared/ScreenLoading";
+import GigsSkeleton from "./components/GigsSkeleton";
 
 export default function GigsLoading() {
-  return <ScreenLoading label="Loading gigs" />;
+  return <GigsSkeleton />;
 }

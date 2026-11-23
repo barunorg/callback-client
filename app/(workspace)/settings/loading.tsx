@@ -1,5 +1,5 @@
-import ScreenLoading from "@/components/shared/ScreenLoading";
+import SettingsSkeleton from "./components/SettingsSkeleton";
 
 export default function SettingsLoading() {
-  return <ScreenLoading label="Loading settings & billing" />;
+  return <SettingsSkeleton />;
 }

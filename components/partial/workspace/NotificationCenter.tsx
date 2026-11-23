@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import SkeletonBlock from "@/components/shared/skeletons/SkeletonBlock";
 import { cn } from "@/lib/utils";
 import type { WorkspaceNotification } from "@/types/workspace/notifications";
 import NotificationItem from "./NotificationItem";
@@ -17,11 +18,13 @@ type NotificationFilter = (typeof notificationFilters)[number]["id"];
 
 export default function NotificationCenter({
   notifications,
+  isLoading,
   onMarkRead,
   onMarkAllRead,
   onClose,
 }: {
   notifications: WorkspaceNotification[];
+  isLoading: boolean;
   onMarkRead: (id: number) => void;
   onMarkAllRead: () => void;
   onClose: () => void;
@@ -94,7 +97,25 @@ export default function NotificationCenter({
         </div>
 
         <div className="max-h-[min(430px,64vh)] overflow-y-auto">
-          {visibleNotifications.length > 0 ? (
+          {isLoading && (
+            <ul aria-label="Loading notifications">
+              {Array.from({ length: 3 }, (_, index) => (
+                <li
+                  key={index}
+                  aria-hidden="true"
+                  className="flex gap-3 border-b border-[#EFECE4] px-4.5 py-3.5"
+                >
+                  <SkeletonBlock className="mt-1 size-2 shrink-0 rounded-full" />
+                  <div className="flex flex-1 flex-col gap-2">
+                    <SkeletonBlock className="h-3 w-full" />
+                    <SkeletonBlock className="h-3 w-3/5" />
+                    <SkeletonBlock className="h-2.5 w-20" />
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+          {!isLoading && visibleNotifications.length > 0 && (
             <ul>
               {visibleNotifications.map((notification) => (
                 <NotificationItem
@@ -104,7 +125,8 @@ export default function NotificationCenter({
                 />
               ))}
             </ul>
-          ) : (
+          )}
+          {!isLoading && visibleNotifications.length === 0 && (
             <p className="p-7 text-center text-[12.5px] text-[#9A9384]">
               Nothing here — all quiet.
             </p>
