@@ -1,12 +1,12 @@
-import CareerModeSection from "../CareerModeSection";
-import DifferentiationSection from "../DifferentiationSection";
-import FooterSection from "../FooterSection";
-import GhostShieldSection from "../GhostShieldSection";
-import HeroSection from "../HeroSection";
-import HowItWorksSection from "../HowItWorksSection";
-import PricingSection from "../PricingSection";
-import ProblemSection from "../ProblemSection";
-import TestimonialsSection from "../TestimonialsSection";
+import CareerModeSection from "./components/CareerModeSection";
+import DifferentiationSection from "./components/DifferentiationSection";
+import FooterSection from "@/components/partial/FooterSection";
+import GhostShieldSection from "./components/GhostShieldSection";
+import HeroSection from "./components/HeroSection";
+import HowItWorksSection from "./components/HowItWorksSection";
+import PricingSection from "./components/PricingSection";
+import ProblemSection from "./components/ProblemSection";
+import TestimonialsSection from "./components/TestimonialsSection";
 
 export default function Page() {
   return (

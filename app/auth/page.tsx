@@ -1,6 +1,7 @@
 import Link from "next/link";
-import AuthForm from "./AuthForm";
-import AuthProofPanel from "./AuthProofPanel";
+import BrandMark from "@/components/icons/BrandMark";
+import AuthForm from "./components/AuthForm";
+import AuthProofPanel from "./components/AuthProofPanel";
 
 export default function AuthPage() {
   return (
@@ -16,9 +17,7 @@ export default function AuthPage() {
               aria-label="Callback home"
               className="flex items-center gap-2.5 text-[#141C17]"
             >
-              <span className="grid size-7 place-items-center rounded-lg bg-[#8FE388] font-heading text-[15px] font-extrabold text-[#0F1F16]">
-                C
-              </span>
+              <BrandMark className="size-7 rounded-lg text-[15px]" />
               <span className="font-heading text-base font-bold tracking-tight">
                 Callback
               </span>
@@ -31,7 +30,7 @@ export default function AuthPage() {
             </Link>
           </header>
 
-          <div className="mx-auto flex w-full max-w-[400px] flex-1 items-center py-9">
+          <div className="mx-auto flex w-full max-w-100 flex-1 items-center py-9">
             <AuthForm />
           </div>
         </section>

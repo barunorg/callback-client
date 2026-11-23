@@ -1,0 +1,40 @@
+import type { Gig } from "@/types/workspace/gigs";
+
+export const gigsFixture: Gig[] = [
+  {
+    id: "merrow",
+    initials: "MH",
+    color: "#2C4A3A",
+    client: "Merrow Health",
+    vetting: "client verified · escrow funded",
+    brief: "Airflow cleanup — 3 DAGs failing intermittently",
+    pay: "$1,800",
+    duration: "fixed · ~2 weekends",
+    why: "your capstone ran 94 days without a failed DAG — they found you.",
+    status: "INVITE",
+  },
+  {
+    id: "ostro",
+    initials: "OS",
+    color: "#1E4A7A",
+    client: "Ostro",
+    vetting: "client verified · escrow funded",
+    brief: "dbt test suite for their events warehouse",
+    pay: "$950",
+    duration: "fixed · 1 weekend",
+    why: "dbt tests on 2M events/day — quoted straight from your GitHub.",
+    status: "INVITE",
+  },
+  {
+    id: "quill",
+    initials: "QC",
+    color: "#7A3A1E",
+    client: "Quill & Co",
+    vetting: "repeat client · 2 gigs paid on time",
+    brief: "Go microservice: PDF export endpoint",
+    pay: "$1,200",
+    duration: "fixed · ~10 days",
+    why: "your gRPC scheduler matches their stack.",
+    status: "PROPOSAL SENT",
+  },
+];
