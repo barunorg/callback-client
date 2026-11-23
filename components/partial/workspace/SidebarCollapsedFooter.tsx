@@ -1,6 +1,7 @@
 "use client";
 
 import { Zap } from "lucide-react";
+import SkeletonBlock from "@/components/shared/skeletons/SkeletonBlock";
 import { usePlan } from "@/stores/PlanProvider";
 import UserAvatar from "./UserAvatar";
 
@@ -13,7 +14,7 @@ export default function SidebarCollapsedFooter() {
         title="Autopilot active"
         className="size-2 animate-ap-pulse rounded-full bg-[#8FE388]"
       />
-      {!isPro && (
+      {account && !isPro && (
         <button
           type="button"
           title="Upgrade to Pro"
@@ -24,7 +25,11 @@ export default function SidebarCollapsedFooter() {
           <Zap aria-hidden="true" strokeWidth={1.8} className="size-4.25" />
         </button>
       )}
-      {account && <UserAvatar initials={account.initials} />}
+      {account ? (
+        <UserAvatar initials={account.initials} />
+      ) : (
+        <SkeletonBlock tone="dark" className="size-8 rounded-full" />
+      )}
     </div>
   );
 }

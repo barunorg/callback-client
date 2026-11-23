@@ -1,5 +1,5 @@
-import ScreenLoading from "@/components/shared/ScreenLoading";
+import ProfileSkeleton from "./components/ProfileSkeleton";
 
 export default function ProfileLoading() {
-  return <ScreenLoading label="Loading profile" />;
+  return <ProfileSkeleton />;
 }

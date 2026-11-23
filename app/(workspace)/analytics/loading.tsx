@@ -1,5 +1,5 @@
-import ScreenLoading from "@/components/shared/ScreenLoading";
+import AnalyticsSkeleton from "./components/AnalyticsSkeleton";
 
 export default function AnalyticsLoading() {
-  return <ScreenLoading label="Loading analytics" />;
+  return <AnalyticsSkeleton />;
 }

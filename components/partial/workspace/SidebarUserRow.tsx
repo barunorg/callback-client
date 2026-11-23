@@ -1,12 +1,23 @@
 "use client";
 
+import SkeletonBlock from "@/components/shared/skeletons/SkeletonBlock";
 import { usePlan } from "@/stores/PlanProvider";
 import UserAvatar from "./UserAvatar";
 
 export default function SidebarUserRow() {
   const { account, isPro } = usePlan();
 
-  if (!account) return null;
+  if (!account) {
+    return (
+      <div aria-hidden="true" className="flex items-center gap-2.5 px-0.5 py-1">
+        <SkeletonBlock tone="dark" className="size-8 shrink-0 rounded-full" />
+        <div className="flex flex-1 flex-col gap-1.5">
+          <SkeletonBlock tone="dark" className="h-3 w-24" />
+          <SkeletonBlock tone="dark" className="h-2.5 w-32" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex items-center gap-2.5 px-0.5 py-1 whitespace-nowrap">

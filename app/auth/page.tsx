@@ -1,7 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import BrandMark from "@/components/icons/BrandMark";
+import { createPageMetadata } from "@/lib/metadata";
 import AuthForm from "./components/AuthForm";
 import AuthProofPanel from "./components/AuthProofPanel";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Create your free account",
+  description:
+    "Sign up free with your university email — set up once and Callback finds, tailors and sends visa-friendly job applications for you.",
+  path: "/auth/",
+});
 
 export default function AuthPage() {
   return (

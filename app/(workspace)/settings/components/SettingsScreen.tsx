@@ -1,6 +1,6 @@
 "use client";
 
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useSuspenseQueries } from "@tanstack/react-query";
 import { workspaceQueries } from "@/lib/api/workspaceQueries";
 import PageHeading from "@/components/shared/PageHeading";
 import AccountPanel from "./AccountPanel";
@@ -9,7 +9,10 @@ import PlanPanel from "./PlanPanel";
 import QuickLinksPanel from "./QuickLinksPanel";
 
 export default function SettingsScreen() {
-  const { data: settings } = useSuspenseQuery(workspaceQueries.settings);
+  // Waits for the account too, so plan-dependent UI never flashes.
+  const [{ data: settings }] = useSuspenseQueries({
+    queries: [workspaceQueries.settings, workspaceQueries.account],
+  });
 
   return (
     <div className="max-w-220">

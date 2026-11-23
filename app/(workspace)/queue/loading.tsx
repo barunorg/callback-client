@@ -1,5 +1,5 @@
-import ScreenLoading from "@/components/shared/ScreenLoading";
+import ReviewQueueSkeleton from "./components/ReviewQueueSkeleton";
 
 export default function ReviewQueueLoading() {
-  return <ScreenLoading label="Loading review queue" />;
+  return <ReviewQueueSkeleton />;
 }

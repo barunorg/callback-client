@@ -1,5 +1,5 @@
-import ScreenLoading from "@/components/shared/ScreenLoading";
+import ReferralsSkeleton from "./components/ReferralsSkeleton";
 
 export default function ReferralsLoading() {
-  return <ScreenLoading label="Loading referrals" />;
+  return <ReferralsSkeleton />;
 }

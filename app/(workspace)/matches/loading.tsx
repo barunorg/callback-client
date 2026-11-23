@@ -1,5 +1,5 @@
-import ScreenLoading from "@/components/shared/ScreenLoading";
+import MatchesSkeleton from "./components/MatchesSkeleton";
 
 export default function MatchesLoading() {
-  return <ScreenLoading label="Loading matches" />;
+  return <MatchesSkeleton />;
 }

@@ -1,5 +1,5 @@
-import ScreenLoading from "@/components/shared/ScreenLoading";
+import AutomationRulesSkeleton from "./components/AutomationRulesSkeleton";
 
 export default function AutomationRulesLoading() {
-  return <ScreenLoading label="Loading automation rules" />;
+  return <AutomationRulesSkeleton />;
 }

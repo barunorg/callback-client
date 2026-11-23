@@ -1,5 +1,5 @@
-import ScreenLoading from "@/components/shared/ScreenLoading";
+import TrackerSkeleton from "./components/TrackerSkeleton";
 
 export default function TrackerLoading() {
-  return <ScreenLoading label="Loading tracker" />;
+  return <TrackerSkeleton />;
 }

@@ -25,23 +25,30 @@ export default function DesktopSidebar({ activeSlug }: { activeSlug: string }) {
     >
       <div
         className={cn(
-          "absolute inset-y-0 left-0 flex flex-col overflow-x-hidden overflow-y-auto bg-[#0F1F16] px-3 py-4 text-[#E9EFE9] transition-[width] duration-200 ease-in-out",
+          "absolute inset-y-0 left-0 flex flex-col overflow-hidden bg-[#0F1F16] px-3 py-4 text-[#E9EFE9] transition-[width] duration-200 ease-in-out",
           isExpanded
             ? "w-59.5 shadow-[30px_0_70px_-30px_rgba(15,31,22,.5)]"
             : "w-16",
         )}
       >
-        <SidebarBrand isExpanded={isExpanded} />
-        <SidebarNav activeSlug={activeSlug} isExpanded={isExpanded} />
-        <div className="flex-1" />
-        {isExpanded ? (
-          <>
-            <SidebarPlanCard />
-            <SidebarUserRow />
-          </>
-        ) : (
-          <SidebarCollapsedFooter />
-        )}
+        <div className="shrink-0">
+          <SidebarBrand isExpanded={isExpanded} />
+        </div>
+        {/* Brand and footer stay pinned; only the nav list scrolls (with a
+            hidden scrollbar) when the window is too short to fit it. */}
+        <div className="scrollbar-none min-h-0 flex-1 overflow-x-hidden overflow-y-auto">
+          <SidebarNav activeSlug={activeSlug} isExpanded={isExpanded} />
+        </div>
+        <div className="shrink-0 pt-3">
+          {isExpanded ? (
+            <>
+              <SidebarPlanCard />
+              <SidebarUserRow />
+            </>
+          ) : (
+            <SidebarCollapsedFooter />
+          )}
+        </div>
       </div>
     </aside>
   );

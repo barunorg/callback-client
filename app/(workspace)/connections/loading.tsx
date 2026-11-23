@@ -1,5 +1,5 @@
-import ScreenLoading from "@/components/shared/ScreenLoading";
+import ConnectionsSkeleton from "./components/ConnectionsSkeleton";
 
 export default function ConnectionsLoading() {
-  return <ScreenLoading label="Loading connections" />;
+  return <ConnectionsSkeleton />;
 }
