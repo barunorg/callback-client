@@ -4,7 +4,6 @@ import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 import TanStackQueryClientProvider from "./TanStackQueryClientProvider";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
-import NavBar from "./NavBar";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -22,10 +21,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <TanStackQueryClientProvider>
-          <NuqsAdapter>
-            <NavBar />
-            {children}
-          </NuqsAdapter>
+          <NuqsAdapter>{children}</NuqsAdapter>
         </TanStackQueryClientProvider>
       </body>
     </html>
