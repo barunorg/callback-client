@@ -38,15 +38,17 @@ export default function AuthFormContent() {
   const email = useWatch({ control, name: "email" }) ?? "";
   const hasStudentEmail = /\.edu(?:\.[a-z]{2})?$/i.test(email.trim());
 
-  const enterWorkspace = () => router.replace("/dashboard/");
+  // New accounts go through the guided setup; returning users go straight in.
+  const continueAfterAuth = () =>
+    router.replace(isLogin ? "/dashboard/" : "/onboarding/");
   const emailAuth = useMutation({
     mutationFn: (values: AuthFormValues) =>
       isLogin ? authApi.signIn(values) : authApi.signUp(values),
-    onSuccess: enterWorkspace,
+    onSuccess: continueAfterAuth,
   });
   const providerAuth = useMutation({
     mutationFn: authApi.signInWithProvider,
-    onSuccess: enterWorkspace,
+    onSuccess: continueAfterAuth,
   });
   const isPending = emailAuth.isPending || providerAuth.isPending;
 
