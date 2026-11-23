@@ -34,9 +34,15 @@ export default function DesktopSidebar({ activeSlug }: { activeSlug: string }) {
         <div className="shrink-0">
           <SidebarBrand isExpanded={isExpanded} />
         </div>
-        {/* Brand and footer stay pinned; only the nav list scrolls (with a
-            hidden scrollbar) when the window is too short to fit it. */}
-        <div className="scrollbar-none min-h-0 flex-1 overflow-x-hidden overflow-y-auto">
+        {/* Brand and footer stay pinned; only the nav list scrolls when the
+            window is too short. The scrollbar shows while the panel is open
+            and hides when it collapses back to icons. */}
+        <div
+          className={cn(
+            "min-h-0 flex-1 overflow-x-hidden overflow-y-auto",
+            isExpanded ? "scrollbar-thin-on-dark" : "scrollbar-none",
+          )}
+        >
           <SidebarNav activeSlug={activeSlug} isExpanded={isExpanded} />
         </div>
         <div className="shrink-0 pt-3">
