@@ -32,7 +32,7 @@ export default function MobileNavDrawer({
             <X aria-hidden="true" className="size-5" />
           </button>
         </div>
-        <div className="scrollbar-none min-h-0 flex-1 overflow-y-auto">
+        <div className="scrollbar-thin-on-dark min-h-0 flex-1 overflow-y-auto">
           <SidebarNav activeSlug={activeSlug} isExpanded onNavigate={onClose} />
         </div>
         <div className="shrink-0 pt-6">

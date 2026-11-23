@@ -18,7 +18,14 @@
   }
 }
 
-/* Keeps an element scrollable while hiding its scrollbar (sidebar nav). */
+/* Thin, light scrollbar for dark panels (open sidebar, mobile drawer). It
+   only appears when the content actually overflows. */
+@utility scrollbar-thin-on-dark {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(255 255 255 / 0.35) transparent;
+}
+
+/* Keeps an element scrollable while hiding its scrollbar (closed sidebar). */
 @utility scrollbar-none {
   scrollbar-width: none;
 
