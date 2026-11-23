@@ -1,11 +1,30 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
-import TanStackQueryClientProvider from "./TanStackQueryClientProvider";
+import {
+  Bricolage_Grotesque,
+  IBM_Plex_Mono,
+  Instrument_Sans,
+} from "next/font/google";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { cn } from "@/lib/utils";
+import TanStackQueryClientProvider from "@/components/providers/TanStackQueryClientProvider";
+import "./globals.css";
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+const instrumentSans = Instrument_Sans({
+  subsets: ["latin"],
+  variable: "--font-instrument-sans",
+});
+
+const bricolageGrotesque = Bricolage_Grotesque({
+  subsets: ["latin"],
+  axes: ["opsz"],
+  variable: "--font-bricolage-grotesque",
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-ibm-plex-mono",
+});
 
 export const metadata: Metadata = {
   title: "Callback",
@@ -17,9 +36,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={cn("h-full antialiased bg-black", "font-sans", geist.variable)}
+      className={cn(
+        "h-full bg-black font-sans antialiased",
+        instrumentSans.variable,
+        bricolageGrotesque.variable,
+        ibmPlexMono.variable,
+      )}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="flex min-h-full flex-col">
         <TanStackQueryClientProvider>
           <NuqsAdapter>{children}</NuqsAdapter>
         </TanStackQueryClientProvider>
