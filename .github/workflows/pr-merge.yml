@@ -1,5 +1,5 @@
 # PR merged: notifications and cleanup only.
-name: PR Merged
+name: PR Merged Notifications Messages
 on:
   pull_request:
     types: [closed]
@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   merged:
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
     runs-on: ubuntu-latest
     steps:
       - name: Announce merge
