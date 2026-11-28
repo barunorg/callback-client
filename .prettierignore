@@ -1,3 +1,8 @@
 # Ignore artifacts:
 build
 coverage
+
+# Vendored agent skills (installed with `skills add`) — keep upstream formatting.
+# The real files live in .agents/skills/; .claude/skills/shadcn links to them.
+.agents/skills/
+.claude/skills/shadcn
